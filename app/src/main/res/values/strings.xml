@@ -6,4 +6,8 @@
 
     <!-- Strings -->
     <string name="dialog_quantity_title">Qty: </string>
+
+
+    <!--Tag-->
+    <string name="fragment_view_product">FragmentViewProduct</string>
 </resources>

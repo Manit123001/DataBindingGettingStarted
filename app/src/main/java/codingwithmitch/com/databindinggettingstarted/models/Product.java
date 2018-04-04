@@ -1,11 +1,12 @@
 package codingwithmitch.com.databindinggettingstarted.models;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.math.BigDecimal;
 
 
-public class Product {
+public class Product implements Parcelable {
 
     private static final String TAG = "Product";
 
@@ -42,6 +43,32 @@ public class Product {
         serial_number = in.readInt();
     }
 
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeInt(image);
+        dest.writeInt(num_ratings);
+        dest.writeInt(serial_number);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public boolean hasSalePrice(){
         double salePrice = sale_price.doubleValue();
