@@ -10,4 +10,8 @@
 
     <!--Tag-->
     <string name="fragment_view_product">FragmentViewProduct</string>
+    <string name="fragment_main">FragmentMain</string>
+
+    <!--Intent-->
+    <string name="intent_product">intent_product</string>
 </resources>

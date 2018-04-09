@@ -1,8 +1,9 @@
 package codingwithmitch.com.databindinggettingstarted;
 
+import codingwithmitch.com.databindinggettingstarted.models.Product;
+
 public interface IMainActivity {
 
-    void inflateQuantityDialog();
+    void inflateViewProductFragment(Product product);
 
-    void setQuantity(int quantity);
 }
