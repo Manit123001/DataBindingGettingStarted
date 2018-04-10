@@ -37,8 +37,11 @@ public class ViewProductFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = FragmentViewProductBinding.inflate(inflater);
 
-        mBinding.setProduct(mProduct);
-        mBinding.setQty(1);
+        ProductViewModel productView = new ProductViewModel();
+        productView.setProduct(mProduct);
+        productView.setQuantity(1);
+        mBinding.setProductView(productView);
+
 
         return mBinding.getRoot();
     }
