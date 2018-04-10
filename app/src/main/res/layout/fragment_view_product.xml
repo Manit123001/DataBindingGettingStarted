@@ -20,12 +20,22 @@
         android:layout_height="match_parent"
         android:background="@color/White">
 
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="@{productView.imageVisibility ? View.GONE: View.VISIBLE}"
+            android:layout_centerInParent="true" />
+
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/container_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/White"
             android:orientation="vertical"
+            android:visibility="@{productView.imageVisibility ? View.VISIBLE: View.INVISIBLE}"
             android:padding="10dp">
 
             <RelativeLayout
@@ -87,7 +97,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:scaleType="fitCenter"
-                    app:imageUrl="@{productView.product.image}" />
+                    app:imageResource="@{productView.product.image}"
+                    app:requestListener="@{productView.customRequestListenner}"/>
 
             </RelativeLayout>
 
