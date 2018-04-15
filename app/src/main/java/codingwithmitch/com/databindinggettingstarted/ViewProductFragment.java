@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import codingwithmitch.com.databindinggettingstarted.databinding.FragmentViewProductBinding;
 import codingwithmitch.com.databindinggettingstarted.models.Product;
-
+import codingwithmitch.com.databindinggettingstarted.models.ProductViewModel;
 
 public class ViewProductFragment extends Fragment {
 
@@ -39,7 +39,7 @@ public class ViewProductFragment extends Fragment {
         productView.setProduct(mProduct);
         productView.setQuantity(1);
         mBinding.setProductView(productView);
-
+        mBinding.setIMainActivity((IMainActivity) getActivity());
 
         return mBinding.getRoot();
     }

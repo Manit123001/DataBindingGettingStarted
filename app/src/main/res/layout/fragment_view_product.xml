@@ -11,7 +11,11 @@
 
         <variable
             name="productView"
-            type="codingwithmitch.com.databindinggettingstarted.ProductViewModel" />
+            type="codingwithmitch.com.databindinggettingstarted.models.ProductViewModel" />
+
+        <variable
+            name="iMainActivity"
+            type="codingwithmitch.com.databindinggettingstarted.IMainActivity" />
 
     </data>
 
@@ -20,14 +24,12 @@
         android:layout_height="match_parent"
         android:background="@color/White">
 
-
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:visibility="@{productView.imageVisibility ? View.GONE: View.VISIBLE}"
-            android:layout_centerInParent="true" />
-
+            android:layout_centerInParent="true"
+            android:visibility="@{productView.imageVisibility ? View.GONE: View.VISIBLE}" />
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/container_view"
@@ -35,8 +37,8 @@
             android:layout_height="match_parent"
             android:background="@color/White"
             android:orientation="vertical"
-            android:visibility="@{productView.imageVisibility ? View.VISIBLE: View.INVISIBLE}"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:visibility="@{productView.imageVisibility ? View.VISIBLE: View.INVISIBLE}">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -44,7 +46,6 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp">
-
 
                 <TextView
                     android:id="@+id/num_ratings"
@@ -56,7 +57,6 @@
                     android:text="@{productView.product.getNumberRatingsString}"
                     android:textColor="@color/DarkGrey"
                     android:textSize="10sp" />
-
 
                 <RatingBar
                     android:id="@+id/rating"
@@ -98,7 +98,7 @@
                     android:layout_centerVertical="true"
                     android:scaleType="fitCenter"
                     app:imageResource="@{productView.product.image}"
-                    app:requestListener="@{productView.customRequestListenner}"/>
+                    app:requestListener="@{productView.customRequestListenner}" />
 
             </RelativeLayout>
 
@@ -132,7 +132,6 @@
                     android:textColor="@color/DarkGrey"
                     android:textSize="10sp"
                     android:visibility="@{productView.product.hasSalePrice()?View.VISIBLE: View.GONE}" />
-
             </LinearLayout>
 
             <RelativeLayout
@@ -141,8 +140,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
                 android:background="@drawable/grey_rounded_button"
+                android:onClick="@{() -> iMainActivity.showQuantityDialog()}"
                 android:padding="10dp">
-
 
                 <TextView
                     android:id="@+id/quantity"
@@ -170,6 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
                 android:background="@drawable/orange_rounded_button"
+                android:onClick="@{() -> iMainActivity.addToChart(productView.product, productView.quantity)}"
                 android:padding="12dp">
 
                 <TextView

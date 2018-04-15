@@ -1,4 +1,4 @@
-package codingwithmitch.com.databindinggettingstarted;
+package codingwithmitch.com.databindinggettingstarted.models;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
+import codingwithmitch.com.databindinggettingstarted.BR;
 import codingwithmitch.com.databindinggettingstarted.models.Product;
 
 public class ProductViewModel extends BaseObservable {

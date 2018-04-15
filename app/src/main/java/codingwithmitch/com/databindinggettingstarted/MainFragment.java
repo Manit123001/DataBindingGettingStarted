@@ -20,7 +20,8 @@ import codingwithmitch.com.databindinggettingstarted.models.Product;
 import codingwithmitch.com.databindinggettingstarted.util.Products;
 
 
-public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class MainFragment extends Fragment
+        implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "MainFragment";
 
