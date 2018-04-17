@@ -10,7 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import codingwithmitch.com.databindinggettingstarted.databinding.FragmentViewCartBinding;
+import codingwithmitch.com.databindinggettingstarted.models.CartItem;
+import codingwithmitch.com.databindinggettingstarted.models.CartViewModel;
+import codingwithmitch.com.databindinggettingstarted.util.PreferenceKeys;
+import codingwithmitch.com.databindinggettingstarted.util.Products;
 
 
 /**
@@ -31,8 +40,28 @@ public class ViewCartFragment extends Fragment {
         mBinding.setIMainActivity((IMainActivity)getActivity());
         mBinding.getIMainActivity().setCartVisibility(true);
 
+        getShoppingCartList();
 
         return mBinding.getRoot();
+    }
+
+    private void getShoppingCartList(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        Set<String> serialNumbers = preferences.getStringSet(PreferenceKeys.shopping_cart, new HashSet<String>());
+
+        Products products = new Products();
+        List<CartItem> cartItems = new ArrayList<>();
+        for(String serialNumber : serialNumbers){
+            int quantity = preferences.getInt(serialNumber, 0);
+            cartItems.add(new CartItem(products.PRODUCT_MAP.get(serialNumber), quantity));
+        }
+        CartViewModel cartViewModel = new CartViewModel();
+        cartViewModel.setCart(cartItems);
+        mBinding.setCartView(cartViewModel);
+    }
+
+    public void updateCartItems(){
+        getShoppingCartList();
     }
 
     @Override

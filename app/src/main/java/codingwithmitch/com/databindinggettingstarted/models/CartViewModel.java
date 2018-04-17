@@ -60,6 +60,7 @@ public class CartViewModel extends BaseObservable {
             int productQuantity = cartItem.getQuantity();
 
             double cost = productQuantity * (Prices.getPrices().get(String.valueOf(cartItem.getProduct().getSerial_number()))).doubleValue();
+
             totalCost += cost;
         }
 

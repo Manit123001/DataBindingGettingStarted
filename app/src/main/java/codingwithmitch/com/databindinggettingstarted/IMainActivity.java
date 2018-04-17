@@ -1,5 +1,6 @@
 package codingwithmitch.com.databindinggettingstarted;
 
+import codingwithmitch.com.databindinggettingstarted.models.CartItem;
 import codingwithmitch.com.databindinggettingstarted.models.Product;
 
 public interface IMainActivity {
@@ -14,5 +15,10 @@ public interface IMainActivity {
 
     void inflateViewCartFragment();
 
-    void  setCartVisibility(boolean visibility);
+    void setCartVisibility(boolean visibility);
+
+    void updateQuantity(Product product, int quantity);
+
+    void removeCartItem(CartItem cartItem);
+
 }
